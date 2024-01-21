@@ -1,4 +1,22 @@
-<div>
-	<a href="{{ doc.route }}">{{ doc.title or doc.name }}</a>
-</div>
+{% if doc.docstatus==1 and doc.status in ['Available','Partially Occupied']%}
+	<div class="card">
+		<div class="py-8 row" style="margin-left: 12px;">
+			<div class="col-sm-1">
+				{% if doc.type_of_room == 'Single Occupancy' %}
+					<img alt="{{ doc.name }}" src="{{doc.photo1 or '/files/single.png'}}"/>
+				{% elif doc.type_of_room == 'Double Sharing' %}
+					<img alt="{{ doc.name }}" src="{{doc.photo1 or '/files/double.png'}}"/>
+				{% elif doc.type_of_room == 'Triple Sharing' %}
+					<img alt="{{ doc.name }}" src="{{doc.photo1 or '/files/triple.png'}}"/>
+				{% elif doc.type_of_room == 'Multiple Sharing' %}
+					<img alt="{{ doc.name }}" src="{{doc.photo1 or '/files/multiple.jpg'}}"/>
+				{% endif %}
+			</div>
+			<div class="col">
+			<a class="font-size-lg" href="{{ doc.route }}">{{ doc.name }}</a>
+			<p class="text-muted">Status: {{ doc.status }}</p>
+			</div>
+		</div>
+	</div>
+{% endif %}
 <!-- this is a sample default list template -->

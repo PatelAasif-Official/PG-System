@@ -1,0 +1,198 @@
+{
+ "actions": [],
+ "autoname": "format:PENT-{guest_full_name}-{#####}",
+ "creation": "2024-01-21 16:33:16.277853",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "guest_details_section",
+  "booking",
+  "guest",
+  "guest_full_name",
+  "column_break_ydcew",
+  "guest_email",
+  "check_in_date",
+  "check_out_date",
+  "room_and_pricing_details_section",
+  "room",
+  "room_number",
+  "column_break_k59dj",
+  "rate_per_night",
+  "no_of_night_stay",
+  "canculation_section",
+  "total",
+  "discount",
+  "column_break_fee2l",
+  "grand_total",
+  "paid_on",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "guest_details_section",
+   "fieldtype": "Section Break",
+   "label": "Guest Details"
+  },
+  {
+   "fetch_from": "booking.guest",
+   "fieldname": "guest",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Guest",
+   "options": "Customer",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fetch_from": "guest.full_name",
+   "fieldname": "guest_full_name",
+   "fieldtype": "Data",
+   "label": "Guest Full Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "booking",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Booking",
+   "options": "Check-in and Check-out",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_ydcew",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "guest.email_address",
+   "fieldname": "guest_email",
+   "fieldtype": "Data",
+   "label": "Guest Email",
+   "options": "Email",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "booking.check_out_date",
+   "fieldname": "check_out_date",
+   "fieldtype": "Date",
+   "label": "Check Out Date",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "room_and_pricing_details_section",
+   "fieldtype": "Section Break",
+   "label": "Room and Pricing Details"
+  },
+  {
+   "fetch_from": "booking.room",
+   "fieldname": "room",
+   "fieldtype": "Link",
+   "label": "Room",
+   "options": "Room",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fetch_from": "booking.room_number",
+   "fieldname": "room_number",
+   "fieldtype": "Data",
+   "label": "Room Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "no_of_night_stay",
+   "fieldtype": "Int",
+   "label": "No of Night Stay",
+   "read_only": 1
+  },
+  {
+   "fieldname": "canculation_section",
+   "fieldtype": "Section Break",
+   "label": "Canculation"
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Currency",
+   "label": "Total",
+   "read_only": 1
+  },
+  {
+   "fieldname": "discount",
+   "fieldtype": "Percent",
+   "label": "Discount (Percent)"
+  },
+  {
+   "fieldname": "column_break_fee2l",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "grand_total",
+   "fieldtype": "Currency",
+   "label": "Grand Total",
+   "read_only": 1
+  },
+  {
+   "fieldname": "paid_on",
+   "fieldtype": "Datetime",
+   "label": "Paid On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Payment Entry",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "column_break_k59dj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "booking.check_in_date",
+   "fieldname": "check_in_date",
+   "fieldtype": "Date",
+   "label": "Check In Date",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fetch_from": "booking.price_per_night",
+   "fieldname": "rate_per_night",
+   "fieldtype": "Currency",
+   "label": "Rate Per Night",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-01-21 17:03:02.712260",
+ "modified_by": "Administrator",
+ "module": "PG System",
+ "name": "Payment Entry",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

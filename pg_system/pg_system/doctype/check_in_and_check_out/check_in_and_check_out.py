@@ -6,42 +6,52 @@ from frappe.model.document import Document
 
 class CheckinandCheckout(Document):
 	def before_submit(self):
-		count = self.check_booked_room()
-		if self.type_of_room == 'Single Occupancy':
-			if count <= 1:
-				frappe.db.set_value('Room',self.room,'status','Occupied', update_modified=False)
-			else:
-				frappe.throw("Selected Room is not Available.")
-		else:
-			
-			if self.type_of_room == 'Double Sharing':
-				if count == 2:
-					update_status(self.room,'Occupied',count)
-				elif count < 2:
-					update_status(self.room,'Partially Occupied',count)
-				elif count > 2:
-					frappe.throw("Selected Room is not Available.")
-			
-			if self.type_of_room == 'Triple Sharing':
-				if count == 3:
-					update_status(self.room,'Occupied',count)
-				elif count < 3:
-					update_status(self.room,'Partially Occupied',count)
-				elif  count > 3:
-					frappe.throw("Selected Room is not Available.")
-			
-			if self.type_of_room == "Multiple Sharing":
-				no_of_beds = frappe.db.get_value("Room",self.room,"number_of_beds")
-				if count == no_of_beds:
-					update_status(self.room,'Occupied',count)
-				elif count < no_of_beds:
-					update_status(self.room,'Partially Occupied',count)
-				elif count > no_of_beds:
-					frappe.throw("Selected Room is not Available.")
+		room = frappe.get_doc("Room",self.room)
+		if room.number_of_beds_available == 0 and self.status=='Checked In':
+			frappe.throw("Selected Room is not Available" if self.type_of_room == 'Single Occupancy' else "Bed is not Available in Selected Room.")
+		room.number_of_beds_available = int(room.number_of_beds_available) - 1 if self.status=='Checked In' else int(room.number_of_beds_available) + 1
+		room.save()
+		room.run_method('update_status')
+		
 
-	def on_update_before_submit(self):
-		if self.check_out==1:
-			self.update_room_data()
+
+		# count = self.check_booked_room()
+		# if self.type_of_room == 'Single Occupancy':
+		# 	if count <= 1:
+		# 		frappe.db.set_value('Room',self.room,'status','Occupied', update_modified=False)
+		# 	else:
+		# 		frappe.throw("Selected Room is not Available.")
+		# else:
+			
+		# 	if self.type_of_room == 'Double Sharing':
+		# 		if count == 2:
+		# 			update_status(self.room,'Occupied',count)
+		# 		elif count < 2:
+		# 			update_status(self.room,'Partially Occupied',count)
+		# 		elif count > 2:
+		# 			frappe.throw("Selected Room is not Available.")
+			
+		# 	if self.type_of_room == 'Triple Sharing':
+		# 		if count == 3:
+		# 			update_status(self.room,'Occupied',count)
+		# 		elif count < 3:
+		# 			update_status(self.room,'Partially Occupied',count)
+		# 		elif  count > 3:
+		# 			frappe.throw("Selected Room is not Available.")
+			
+		# 	if self.type_of_room == "Multiple Sharing":
+		# 		no_of_beds = frappe.db.get_value("Room",self.room,"number_of_beds")
+		# 		if count == no_of_beds:
+		# 			update_status(self.room,'Occupied',count)
+		# 		elif count < no_of_beds:
+		# 			update_status(self.room,'Partially Occupied',count)
+		# 		elif count > no_of_beds:
+		# 			frappe.throw("Selected Room is not Available.")
+
+	def on_update_after_submit(self):
+		self.before_submit()
+		# if self.status=="Checked Out":
+		# 	self.update_room_data()
 
 
 	def update_room_data(self):

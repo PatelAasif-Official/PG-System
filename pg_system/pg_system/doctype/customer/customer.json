@@ -105,8 +105,14 @@
   }
  ],
  "index_web_pages_for_search": 1,
- "links": [],
- "modified": "2024-01-20 11:00:00.592538",
+ "links": [
+  {
+   "group": "Booking",
+   "link_doctype": "Check-in and Check-out",
+   "link_fieldname": "guest"
+  }
+ ],
+ "modified": "2024-01-21 16:25:35.646364",
  "modified_by": "Administrator",
  "module": "PG System",
  "name": "Customer",

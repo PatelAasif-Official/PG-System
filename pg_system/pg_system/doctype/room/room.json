@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_guest_to_view": 1,
  "allow_rename": 1,
  "autoname": "format:{type_of_room}-{room_number}",
  "creation": "2024-01-20 11:10:17.968719",
@@ -11,6 +12,7 @@
   "type_of_room",
   "number_of_beds",
   "room_number",
+  "type",
   "column_break_w9lkm",
   "status",
   "number_of_beds_available",
@@ -19,19 +21,11 @@
   "photo1",
   "column_break_ieawd",
   "preview1",
-  "section_break_blyjc",
-  "photo2",
-  "column_break_d34p1",
-  "preview2",
-  "section_break_1cv39",
-  "photo3",
-  "column_break_yazrg",
-  "preview3",
   "amended_from",
   "website_setting_section",
   "route",
   "column_break_ttdrq",
-  "is_published"
+  "published"
  ],
  "fields": [
   {
@@ -86,16 +80,8 @@
    "label": "Photos"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "photo1",
-   "fieldtype": "Attach Image",
-   "reqd": 1
-  },
-  {
-   "fieldname": "photo2",
-   "fieldtype": "Attach Image"
-  },
-  {
-   "fieldname": "photo3",
    "fieldtype": "Attach Image"
   },
   {
@@ -107,34 +93,6 @@
    "fieldname": "preview1",
    "fieldtype": "Image",
    "options": "photo1"
-  },
-  {
-   "depends_on": "eval:doc.photo2",
-   "fieldname": "preview2",
-   "fieldtype": "Image",
-   "options": "photo2"
-  },
-  {
-   "depends_on": "eval:doc.photo3",
-   "fieldname": "preview3",
-   "fieldtype": "Image",
-   "options": "photo3"
-  },
-  {
-   "fieldname": "section_break_blyjc",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "column_break_d34p1",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_1cv39",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "column_break_yazrg",
-   "fieldtype": "Column Break"
   },
   {
    "fieldname": "amended_from",
@@ -158,7 +116,6 @@
    "label": "Website Details"
   },
   {
-   "allow_on_submit": 1,
    "fieldname": "route",
    "fieldtype": "Data",
    "label": "Route",
@@ -170,19 +127,34 @@
   },
   {
    "allow_on_submit": 1,
-   "default": "0",
-   "fieldname": "is_published",
+   "default": "1",
+   "fieldname": "published",
    "fieldtype": "Check",
-   "label": "Is Published"
+   "hidden": 1,
+   "label": "Published",
+   "read_only": 1
+  },
+  {
+   "default": "Non-AC",
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "AC\nNon-AC"
   }
  ],
  "has_web_view": 1,
  "index_web_pages_for_search": 1,
- "is_published_field": "is_published",
+ "is_published_field": "published",
  "is_submittable": 1,
- "links": [],
+ "links": [
+  {
+   "group": "Check-in and Check-out",
+   "link_doctype": "Check-in and Check-out",
+   "link_fieldname": "room"
+  }
+ ],
  "make_attachments_public": 1,
- "modified": "2024-01-21 11:30:27.793176",
+ "modified": "2024-01-21 16:23:55.780544",
  "modified_by": "Administrator",
  "module": "PG System",
  "name": "Room",
@@ -203,7 +175,7 @@
   }
  ],
  "route": "rooms",
- "search_fields": "status",
+ "search_fields": "status, type",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [

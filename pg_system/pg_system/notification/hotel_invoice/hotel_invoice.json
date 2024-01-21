@@ -1,0 +1,27 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "creation": "2024-01-21 17:20:26.685647",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Payment Entry",
+ "enabled": 1,
+ "event": "Submit",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "Hi {{doc.guest_full_name}},\n<br>\nThanks for choosing PG System! Attached is your invoice. If you have questions, feel free to ask. We hope to host you again soon!\n<br>\nBest Regard,",
+ "modified": "2024-01-21 17:20:36.044531",
+ "modified_by": "Administrator",
+ "module": "PG System",
+ "name": "Hotel Invoice",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_document_field": "guest_email"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": "PS System Invoice"
+}

@@ -9,13 +9,16 @@
  "engine": "InnoDB",
  "field_order": [
   "room_detail_section",
-  "room",
+  "room_type",
   "type_of_room",
-  "column_break_9grdy",
-  "price_per_night",
   "room_number",
+  "column_break_9grdy",
+  "room",
+  "price_per_night",
   "guest_detail_section",
   "guest",
+  "guest_first_name",
+  "guest_last_name",
   "guest_name",
   "column_break_hrrrg",
   "mobile_number",
@@ -23,18 +26,21 @@
   "section_break_blzr8",
   "check_in_date",
   "column_break_ftwbh",
-  "check_out",
   "check_out_date",
+  "status",
   "section_break_eqpr6",
   "amended_from",
-  "customer_rating"
+  "customer_rating",
+  "from_portal"
  ],
  "fields": [
   {
+   "depends_on": "eval:doc.from_portal == 0",
    "fieldname": "guest",
    "fieldtype": "Link",
    "in_standard_filter": 1,
    "label": "Guest",
+   "mandatory_depends_on": "eval:doc.from_portal == 0",
    "options": "Customer",
    "reqd": 1
   },
@@ -116,10 +122,11 @@
   },
   {
    "allow_on_submit": 1,
-   "depends_on": "eval:doc.check_out",
+   "depends_on": "eval:doc.status==\"Checked Out\"",
    "fieldname": "check_out_date",
    "fieldtype": "Datetime",
    "label": "Check Out Date",
+   "mandatory_depends_on": "eval:doc.status==\"Checked Out\"",
    "read_only": 1
   },
   {
@@ -132,6 +139,7 @@
    "read_only": 1
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "customer_rating",
    "fieldtype": "Rating",
    "label": "Customer Rating"
@@ -155,17 +163,53 @@
   },
   {
    "allow_on_submit": 1,
-   "default": "0",
-   "fieldname": "check_out",
-   "fieldtype": "Check",
-   "label": "Check-Out",
+   "default": "Checked In",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Checked In\nChecked Out",
    "read_only": 1
+  },
+  {
+   "fetch_if_empty": 1,
+   "fieldname": "room_type",
+   "fieldtype": "Select",
+   "label": "Room Type",
+   "options": "\nAC\nNon-AC"
+  },
+  {
+   "default": "0",
+   "fieldname": "from_portal",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "From Portal",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.from_portal == 1",
+   "fieldname": "guest_first_name",
+   "fieldtype": "Data",
+   "label": "Guest First Name",
+   "mandatory_depends_on": "eval:doc.from_portal == 1"
+  },
+  {
+   "depends_on": "eval:doc.from_portal == 1",
+   "fieldname": "guest_last_name",
+   "fieldtype": "Data",
+   "label": "Guest Last Name",
+   "mandatory_depends_on": "eval:doc.from_portal == 1"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
- "links": [],
- "modified": "2024-01-20 14:43:51.838889",
+ "links": [
+  {
+   "group": "Payment",
+   "link_doctype": "Payment Entry",
+   "link_fieldname": "booking"
+  }
+ ],
+ "modified": "2024-01-21 17:38:34.243325",
  "modified_by": "Administrator",
  "module": "PG System",
  "name": "Check-in and Check-out",
@@ -187,5 +231,14 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [
+  {
+   "color": "Red",
+   "title": "Checked Out"
+  },
+  {
+   "color": "Green",
+   "title": "Checked In"
+  }
+ ]
 }

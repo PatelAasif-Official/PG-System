@@ -1,7 +1,48 @@
 {% extends "templates/web.html" %}
 
 {% block page_content %}
-<h1>{{ title }}</h1>
+<div class="std-form-layout">
+    <a href="/rooms">
+        <button class="btn btn-secondary btn-default btn-sm" data-label="Back">
+            <span class="alt-underline">Back to the list</span>
+        </button>
+    </a>
+
+    <div style="margin-top: 12px;">
+        <h3 class="ellipsis title-text" style="display:inline;" title="{{doc.name}}">{{doc.name}}</h3>
+        <span class="indicator-pill whitespace-nowrap green">
+            <span>{{doc.status}}</span>
+        </span>
+    </div>
+
+    <img class="card-img-center" style="max-width: 600px;" src="{{ doc.photo1 }}"></imag>
+    <p class="product-description">
+        <ul>
+            <li><strong>Price : </strong> {{ doc.price }} Rs/Night</li>
+            <li> <strong>Room Type: </strong> {{doc.type}}</li>
+            <li> <strong>No Of Beds : </strong> {{doc.number_of_beds}}</li>
+            {% if doc.type_of_room != 'Single Occupancy' %}
+                <li> <strong>No Of Beds Available : </strong> {{doc.number_of_beds_available}}</li>
+            {% endif %}
+            <li> <strong>Other Service : </strong> WiFi, Room Service</li>
+        </ul>
+        PG System provide best service in most affordable price!
+    </p>
+    <h4 class="price">Price: <span>{{doc.price}} INR/ Night</h4>
+    <p class="vote"><strong>91%</strong> of guest enjoyed the stay.</p>
+    <div class="rating">
+        <div class="rating">
+        <svg class="icon icon-md star-click"><use href="#icon-star"></use></svg>
+        <svg class="icon icon-md star-click"><use href="#icon-star"></use></svg>
+        <svg class="icon icon-md star-click"><use href="#icon-star"></use></svg>
+        <svg class="icon icon-md"><use href="#icon-star"></use></svg>
+        <svg class="icon icon-md"><use href="#icon-star"></use></svg>
+    </div>
+    <span class="review-no">41 reviews</span>
+    </div>
+    <a href="/book-room/new?from_portal=1&room_type={{doc.type or 'Non-AC'}}&type_of_room={{doc.type_of_room}}&room_number={{doc.room_number}}&room={{title}}&price_per_night={{doc.price}}" class="btn btn-primary btn-sm primary-action">Book</a>
+</div>
+
 {% endblock %}
 
 <!-- this is a sample default web page template -->
