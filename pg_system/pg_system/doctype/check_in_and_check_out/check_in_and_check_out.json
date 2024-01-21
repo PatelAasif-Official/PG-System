@@ -1,0 +1,191 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{guest_name}-{room_number}-{####}",
+ "creation": "2024-01-20 13:00:35.829982",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "room_detail_section",
+  "room",
+  "type_of_room",
+  "column_break_9grdy",
+  "price_per_night",
+  "room_number",
+  "guest_detail_section",
+  "guest",
+  "guest_name",
+  "column_break_hrrrg",
+  "mobile_number",
+  "email_address",
+  "section_break_blzr8",
+  "check_in_date",
+  "column_break_ftwbh",
+  "check_out",
+  "check_out_date",
+  "section_break_eqpr6",
+  "amended_from",
+  "customer_rating"
+ ],
+ "fields": [
+  {
+   "fieldname": "guest",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Guest",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "guest.full_name",
+   "fieldname": "guest_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Guest Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_hrrrg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "guest.mobile_number",
+   "fieldname": "mobile_number",
+   "fieldtype": "Data",
+   "label": "Mobile Number",
+   "options": "Phone",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "guest.email_address",
+   "fieldname": "email_address",
+   "fieldtype": "Data",
+   "label": "Email Address",
+   "options": "Email",
+   "read_only": 1
+  },
+  {
+   "fieldname": "room_detail_section",
+   "fieldtype": "Section Break",
+   "label": "Room Detail"
+  },
+  {
+   "fieldname": "room",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Room",
+   "options": "Room",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "room.price",
+   "fieldname": "price_per_night",
+   "fieldtype": "Currency",
+   "label": "Price Per Night",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_9grdy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "room.room_number",
+   "fieldname": "room_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Room Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_blzr8",
+   "fieldtype": "Section Break",
+   "label": "Check-In Check-Out Detail"
+  },
+  {
+   "default": "Today",
+   "fieldname": "check_in_date",
+   "fieldtype": "Datetime",
+   "label": "Check In Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_ftwbh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "depends_on": "eval:doc.check_out",
+   "fieldname": "check_out_date",
+   "fieldtype": "Datetime",
+   "label": "Check Out Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Check-in and Check-out",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "customer_rating",
+   "fieldtype": "Rating",
+   "label": "Customer Rating"
+  },
+  {
+   "fetch_from": "room.type_of_room",
+   "fieldname": "type_of_room",
+   "fieldtype": "Select",
+   "label": "Type Of Room",
+   "options": "\nSingle Occupancy\nDouble Sharing\nTriple Sharing\nMultiple Sharing",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_eqpr6",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "guest_detail_section",
+   "fieldtype": "Section Break",
+   "label": "Guest Detail"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "check_out",
+   "fieldtype": "Check",
+   "label": "Check-Out",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-01-20 14:43:51.838889",
+ "modified_by": "Administrator",
+ "module": "PG System",
+ "name": "Check-in and Check-out",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
