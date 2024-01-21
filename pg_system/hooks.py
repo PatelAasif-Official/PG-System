@@ -129,23 +129,23 @@ app_license = "MIT"
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
+scheduler_events = {
 #	"all": [
 #		"pg_system.tasks.all"
 #	],
 #	"daily": [
 #		"pg_system.tasks.daily"
 #	],
-#	"hourly": [
-#		"pg_system.tasks.hourly"
-#	],
+	"hourly": [
+		"pg_system.pg_system.doctype.periodic_maintenance.periodic_maintenance.create_work_log"
+	],
 #	"weekly": [
 #		"pg_system.tasks.weekly"
 #	],
 #	"monthly": [
 #		"pg_system.tasks.monthly"
 #	],
-# }
+}
 
 # Testing
 # -------

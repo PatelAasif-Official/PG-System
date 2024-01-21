@@ -1,0 +1,144 @@
+{
+ "actions": [],
+ "autoname": "format:EMP-{#####}",
+ "creation": "2024-01-22 00:00:38.193913",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "first_name",
+  "middle_name",
+  "last_name",
+  "column_break_wfikg",
+  "full_name",
+  "status",
+  "user_id",
+  "create_user_emp",
+  "section_break_am8xo",
+  "designation",
+  "joining_date",
+  "column_break_8hsns",
+  "email",
+  "mobile_number"
+ ],
+ "fields": [
+  {
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "First Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "middle_name",
+   "fieldtype": "Data",
+   "label": "Middle Name"
+  },
+  {
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Last Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "designation",
+   "fieldtype": "Select",
+   "label": "Designation",
+   "options": "Manager\nCleaner\nAttendant"
+  },
+  {
+   "fieldname": "joining_date",
+   "fieldtype": "Date",
+   "label": "Joining Date"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Active\nLeft\nOn Leave\nInactive",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_wfikg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_am8xo",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_8hsns",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:!doc.__islocal",
+   "fieldname": "user_id",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "User ID",
+   "options": "User"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "options": "Email",
+   "reqd": 1
+  },
+  {
+   "fieldname": "mobile_number",
+   "fieldtype": "Data",
+   "label": "Mobile Number",
+   "options": "Phone"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.__islocal",
+   "fieldname": "create_user_emp",
+   "fieldtype": "Check",
+   "label": "Create User"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Work Log",
+   "link_doctype": "Work Log",
+   "link_fieldname": "employee"
+  }
+ ],
+ "modified": "2024-01-22 00:52:48.417427",
+ "modified_by": "Administrator",
+ "module": "PG System",
+ "name": "Employee",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "status",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "full_name"
+}

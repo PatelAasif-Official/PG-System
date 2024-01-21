@@ -1,0 +1,152 @@
+{
+ "actions": [],
+ "autoname": "format:WL-{type_of_work}-{####}",
+ "creation": "2024-01-22 00:06:41.110197",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "employee",
+  "full_name",
+  "column_break_menfi",
+  "status",
+  "type_of_work",
+  "section_break_nuxez",
+  "periodic_maintenance",
+  "duration",
+  "column_break_ote8s",
+  "schedule_date",
+  "schedule_time",
+  "section_break_gkiyy",
+  "list_of_rooms",
+  "section_break_2yotz",
+  "description"
+ ],
+ "fields": [
+  {
+   "fieldname": "type_of_work",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Type of Work",
+   "options": "\nRoom Service\nCleaning\nRepair\ninspections",
+   "reqd": 1
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Employee",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "\nPending\nCompleted\nIn Progress",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_2yotz",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "List of Room need to be Attended.",
+   "fieldname": "list_of_rooms",
+   "fieldtype": "Table",
+   "label": "List Of Rooms",
+   "options": "Work Log Room list",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "employee.full_name",
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_menfi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_nuxez",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "periodic_maintenance.schedule_date",
+   "fetch_if_empty": 1,
+   "fieldname": "schedule_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Schedule Date",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fetch_from": "periodic_maintenance.duration",
+   "fetch_if_empty": 1,
+   "fieldname": "duration",
+   "fieldtype": "Duration",
+   "label": "Duration",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_ote8s",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "periodic_maintenance.schedule_time",
+   "fetch_if_empty": 1,
+   "fieldname": "schedule_time",
+   "fieldtype": "Time",
+   "label": "Schedule Time",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_gkiyy",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "periodic_maintenance",
+   "fieldtype": "Link",
+   "label": "Periodic Maintenance",
+   "options": "Periodic Maintenance",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-22 01:04:31.249281",
+ "modified_by": "Administrator",
+ "module": "PG System",
+ "name": "Work Log",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

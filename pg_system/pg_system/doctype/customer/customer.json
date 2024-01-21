@@ -47,8 +47,7 @@
    "fieldname": "full_name",
    "fieldtype": "Data",
    "label": "Full Name",
-   "read_only": 1,
-   "unique": 1
+   "read_only": 1
   },
   {
    "fieldname": "column_break_tpu9e",
@@ -112,7 +111,7 @@
    "link_fieldname": "guest"
   }
  ],
- "modified": "2024-01-21 16:25:35.646364",
+ "modified": "2024-01-21 22:26:33.435418",
  "modified_by": "Administrator",
  "module": "PG System",
  "name": "Customer",
