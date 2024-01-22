@@ -111,13 +111,17 @@ work log will be automatically created by the system, it holds the following inf
 
 ## Listing of the Room on the Web Page
 Rooms automatically get piblised to the website but user change the status anytime using button Unpublished on the Room doctype, in the list view of the Room only Available, and Partailly Occupied room will be shown to the Guest user, on click a details view can be seen wich show the details and button to book now Screen shots are as following.
-List view
+
+### List view
+
 ![image](https://github.com/PatelAasif-Official/PG-System/assets/88040507/8ba20d78-a7c0-4ecc-8a10-ee7fdcd28b47)
 
-Details view
+### Details view
+
 ![image](https://github.com/PatelAasif-Official/PG-System/assets/88040507/6167ac54-e3cf-42a1-bd84-eb590d01f18e)
 
-Booking Screen
+### Booking Screen
+
 ![image](https://github.com/PatelAasif-Official/PG-System/assets/88040507/b61fa8af-2d65-45ab-b989-201b39fc540c)
 
 
