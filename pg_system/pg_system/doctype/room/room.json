@@ -154,7 +154,7 @@
   }
  ],
  "make_attachments_public": 1,
- "modified": "2024-01-21 16:23:55.780544",
+ "modified": "2024-01-22 14:22:33.321418",
  "modified_by": "Administrator",
  "module": "PG System",
  "name": "Room",
@@ -171,6 +171,27 @@
    "report": 1,
    "role": "System Manager",
    "share": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "PG Manager",
+   "set_user_permissions": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "PG Employee",
    "write": 1
   }
  ],

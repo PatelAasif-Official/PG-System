@@ -87,10 +87,11 @@
    "reqd": 1
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "\nPending\nCompleted\nIn Progress",
+   "options": "Scheduled\nWork Log Created",
    "read_only": 1
   }
  ],
@@ -103,7 +104,7 @@
    "link_fieldname": "periodic_maintenance"
   }
  ],
- "modified": "2024-01-22 01:12:30.172419",
+ "modified": "2024-01-22 14:27:46.210575",
  "modified_by": "Administrator",
  "module": "PG System",
  "name": "Periodic Maintenance",
@@ -120,6 +121,22 @@
    "report": 1,
    "role": "System Manager",
    "share": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "PG Manager",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
    "write": 1
   }
  ],

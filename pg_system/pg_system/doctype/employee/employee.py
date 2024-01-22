@@ -10,6 +10,9 @@ class Employee(Document):
 		if self.create_user_emp:
 			self.user_id = self.create_user()
 
+		if self.designation != 'Manager' and self.user_id:
+			create_user_permisssion(self.user_id, self.name)
+
 	@frappe.whitelist()
 	def create_user(self):
 		user = frappe.new_doc("User")
@@ -22,3 +25,9 @@ class Employee(Document):
 		return user.name
 
 
+def create_user_permisssion(name, employee_id):
+	user_perm = frappe.new_doc("User Permission")
+	user_perm.user = name
+	user_perm.allow = "Employee"
+	user_perm.for_value = employee_id
+	user_perm.save(ignore_permissions=True)

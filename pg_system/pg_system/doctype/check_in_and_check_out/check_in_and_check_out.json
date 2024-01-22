@@ -211,7 +211,7 @@
    "link_fieldname": "booking"
   }
  ],
- "modified": "2024-01-21 23:26:42.019190",
+ "modified": "2024-01-22 14:21:33.381658",
  "modified_by": "Administrator",
  "module": "PG System",
  "name": "Check-in and Check-out",
@@ -241,6 +241,23 @@
    "read": 1,
    "report": 1,
    "role": "Guest",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "PG Manager",
+   "select": 1,
+   "set_user_permissions": 1,
    "share": 1,
    "submit": 1,
    "write": 1

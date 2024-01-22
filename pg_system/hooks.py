@@ -9,7 +9,9 @@ app_license = "MIT"
 
 # Includes in <head>
 # ------------------
-
+#To Import our custom created roles
+fixtures = [{"dt":"Role"},
+		]
 # include js, css files in header of desk.html
 # app_include_css = "/assets/pg_system/css/pg_system.css"
 # app_include_js = "/assets/pg_system/js/pg_system.js"
@@ -130,15 +132,15 @@ app_license = "MIT"
 # ---------------
 
 scheduler_events = {
+    "hourly": [
+		"pg_system.pg_system.doctype.periodic_maintenance.periodic_maintenance.create_work_log"
+	],
 #	"all": [
 #		"pg_system.tasks.all"
 #	],
 #	"daily": [
 #		"pg_system.tasks.daily"
 #	],
-	"hourly": [
-		"pg_system.pg_system.doctype.periodic_maintenance.periodic_maintenance.create_work_log"
-	],
 #	"weekly": [
 #		"pg_system.tasks.weekly"
 #	],

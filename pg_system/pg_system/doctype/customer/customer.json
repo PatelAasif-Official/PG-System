@@ -111,7 +111,7 @@
    "link_fieldname": "guest"
   }
  ],
- "modified": "2024-01-21 22:26:33.435418",
+ "modified": "2024-01-22 14:20:43.802330",
  "modified_by": "Administrator",
  "module": "PG System",
  "name": "Customer",
@@ -138,8 +138,9 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "PG Employee",
+   "role": "PG Manager",
    "select": 1,
+   "set_user_permissions": 1,
    "share": 1,
    "write": 1
   }
