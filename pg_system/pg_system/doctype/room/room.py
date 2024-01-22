@@ -23,6 +23,9 @@ class Room(WebsiteGenerator):
 		self.update_status()
 
 	def update_status(self):
+		"""
+		Updating status based on no of beds available
+		"""
 		if self.status != 'Under Maintenance':
 			if self.number_of_beds_available == 0:
 				self.status = "Occupied"

@@ -12,7 +12,7 @@ frappe.ui.form.on('Check-in and Check-out', {
 				filters:[['status','IN',['Available','Partially Occupied']], ['docstatus','=',1],['type','=',frm.doc.room_type]]
 			}
 		})
-		if(frm.doc.docstatus == 1 && frm.doc.status!="Checked Out"){
+		if(frm.doc.docstatus == 1 && frm.doc.status!="Checked Out" && frappe.user.has_role("PG Manager")){
 			frm.add_custom_button("Process Checkout" ,function(){
 				let d = new frappe.ui.Dialog({
 					title: 'Enter details',

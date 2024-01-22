@@ -17,14 +17,20 @@ class PeriodicMaintenance(Document):
 
 @frappe.whitelist()
 def create_work_log(pm=None):
+	"""
+	Scheduler event - will execute hourly
+	"""
 	if pm:
+		#This is for front-end logic
 		all_task = [pm]
 	else:
+		#Getting all the Periodic Maintenance for today
 		all_task = frappe.db.get_all("Periodic Maintenance",{"schedule_date":today(),"docstatus":1, "status":"Scheduled"},pluck="name")
 	
 	if all_task:
 		#Getting all Active Emp
 		all_emp = frappe.db.get_all("Employee",{'status':'Active'},pluck="name")
+
 		#Getting all the Rooms which are not in Maintenance Already
 		all_rooms = frappe.db.get_all("Room",{"status":['!=','Under Maintenance']},pluck="name")
 		min_works_per_employee = len(all_rooms) // len(all_emp)
@@ -34,7 +40,7 @@ def create_work_log(pm=None):
 		group = [all_rooms[i * min_works_per_employee:(i + 1) * min_works_per_employee] for i in range(len(all_emp) - extra_employees)]
 		group.extend([all_rooms[i * (min_works_per_employee + 1):(i + 1) * (min_works_per_employee + 1)] for i in range(extra_employees)])
 		
-		#No Need to Enque as it will automatically goes to Background job as it will be run Hourly to check and assign the task
+		#No Need to Enqueue as it will automatically goes to Background job as it will be run Hourly to check and assign the tasko Need to En
 		create_log(all_task,all_emp,group)
 		return 1
 

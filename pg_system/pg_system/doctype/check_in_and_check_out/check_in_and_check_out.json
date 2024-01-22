@@ -110,7 +110,7 @@
   {
    "default": "Today",
    "fieldname": "check_in_date",
-   "fieldtype": "Data",
+   "fieldtype": "Date",
    "label": "Check In Date",
    "reqd": 1
   },
@@ -122,7 +122,7 @@
    "allow_on_submit": 1,
    "depends_on": "eval:doc.status==\"Checked Out\"",
    "fieldname": "check_out_date",
-   "fieldtype": "Data",
+   "fieldtype": "Date",
    "label": "Check Out Date",
    "mandatory_depends_on": "eval:doc.status==\"Checked Out\"",
    "read_only": 1
@@ -211,7 +211,7 @@
    "link_fieldname": "booking"
   }
  ],
- "modified": "2024-01-22 14:21:33.381658",
+ "modified": "2024-01-22 14:56:51.094865",
  "modified_by": "Administrator",
  "module": "PG System",
  "name": "Check-in and Check-out",

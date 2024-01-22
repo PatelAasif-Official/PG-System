@@ -11,10 +11,14 @@ class CheckinandCheckout(Document):
 			self.guest = self.create_customer()
 
 	def validate(self):
-		if get_datetime(self.check_in_date) > get_datetime(now()):
+		if self.docstatus==1 and get_datetime(self.check_in_date) > get_datetime(now()):
 			frappe.throw("Can not submit before Check In Date.")
 
 	def before_submit(self):
+		"""
+		Updating rooms doctype with latest data on checkin available beds will substracted by 1 and on checkout
+		adding one, the no of beds is the main field which automatically update the status of the room.
+		"""
 		room = frappe.get_doc("Room",self.room)
 		if room.number_of_beds_available == 0 and self.status=='Checked In':
 			frappe.throw("Selected Room is not Available" if self.type_of_room == 'Single Occupancy' else "Bed is not Available in Selected Room.")
@@ -23,9 +27,13 @@ class CheckinandCheckout(Document):
 		room.run_method('update_status')
 
 	def on_update_after_submit(self):
+		#Calling before submit for checkout
 		self.before_submit()
 	
 	def create_customer(self):
+		"""
+		This method will call if the checkin is comming from Wefbform, otherwise it will not trigger.
+		"""
 		cust=frappe.new_doc("Customer")
 		cust.first_name = self.guest_first_name
 		cust.last_name = self.guest_last_name
