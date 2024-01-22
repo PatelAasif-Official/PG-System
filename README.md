@@ -1,12 +1,9 @@
 ## PG System
-
 karkhana.io Assignment
 
 After installing frappe bench get PG System app using bench install-app --branch master https://github.com/PatelAasif-Official/PG-System.git
 
-#### License
-
-We have 7 Doctype
+# App Overview
 
 1. Room
 2. Check-In and Check-Out
@@ -16,7 +13,7 @@ We have 7 Doctype
 6. Periodic Maintenance
 7. Work Log
 
-   ###1. Room
+   ### 1. Room
 Room doctype store the room data, Room has following fields.
 1. Room Number
 2. Type of Occupency - Select having options such as Single Occupency, Double Sharing, Triple Sharing and Multiple Sharing
@@ -26,10 +23,11 @@ Room doctype store the room data, Room has following fields.
 6. Number Of Beds Available - All the status will be updated based on this int field, if this is 0 mean room is fully occuoied if this equal to Number of Beds then Available.
 7. Price - Currency field can be updated after submission.
 8. Photos - to show on web portal
+
 ![image](https://github.com/PatelAasif-Official/PG-System/assets/88040507/28921704-e4fd-49e0-8b6f-e6d56601f825)
 
 
-  ###2.Check-In and Check-Out
+  ### 2.Check-In and Check-Out
 Check-In and Check-Out is doctype that store the data regarding customer checkin and checkout, this doctype having following fields
 1. Room Type - Select field user needs to select the type as customer wants AC or Non-AC room so we can apply filter on the linked field of the Room doctype
 2. Room - Link field with Room doctype, it will show only Available, Partially Occupied and AC or Non-AC room.
@@ -44,7 +42,7 @@ Check-In and Check-Out is doctype that store the data regarding customer checkin
 ![image](https://github.com/PatelAasif-Official/PG-System/assets/88040507/c081c2cb-0d5f-48ad-85b4-7497e4d1d567)
 
 
-  ###3.Customer
+  ### 3.Customer
 Customer doctype store the basic information about the Customer, this doctype have following fields
 1. First Name, Middle Name, Last Name - Data field to store cusomer full name
 2. Full Name - Data but read-only system will automatically ganerate the Full Name based on the above fields.
@@ -54,11 +52,10 @@ Customer doctype store the basic information about the Customer, this doctype ha
 6. Mobile Number, Email Address - contact details used to send the Invoice and contact later
 7. Address - Small Text field if ID did not have proper or user want to add address manually.
 
-
 ![image](https://github.com/PatelAasif-Official/PG-System/assets/88040507/1958ef6f-b736-4dc5-a647-7312e6e10922)
 
 
-   ###4.Payment Entry
+   ### 4.Payment Entry
 Payment entry to Collect the Payemnt after checkout, this doctype have following fields. User only need to select Checkin and Checkout entry it will fetche all the data from respective link doctype 
 1. booking - Link with Check-in and Check-out.
 2. Guest, Guest Full Name, Guest Email, Check In Date, Check Out Date, Room, Room Number and Price Per Night all this fields will be fetched from Respective linked doctypes
@@ -69,10 +66,10 @@ Payment entry to Collect the Payemnt after checkout, this doctype have following
 7. Paid On - date field read-on collect the payment entry creation date.
 8. On submition an email notification will be trigger to the Customer Email address.
 
-   ![image](https://github.com/PatelAasif-Official/PG-System/assets/88040507/442a9742-217d-4d27-ae0f-a7abbc1716cd)
+![image](https://github.com/PatelAasif-Official/PG-System/assets/88040507/442a9742-217d-4d27-ae0f-a7abbc1716cd)
 
 
-   ###5. Employee
+   ### 5. Employee
 1. First Name, Middle Name, Last Name - Data field will hold the Employee name
 2. Full Name - Data auto-created from above fields
 3. Status - Select field having options Active, Left, On Leave and Inactive
@@ -83,10 +80,10 @@ Payment entry to Collect the Payemnt after checkout, this doctype have following
 8. Email, Mobile Number - to store the contact details.
 9. If Employee doesnot have user created then we show a button to create User for the Employee that will create user in Backend and set the created user name on the employee master.
 
-    ![image](https://github.com/PatelAasif-Official/PG-System/assets/88040507/8667fcea-64e0-43ed-9406-4d976d6fb7c6)
+![image](https://github.com/PatelAasif-Official/PG-System/assets/88040507/8667fcea-64e0-43ed-9406-4d976d6fb7c6)
 
 
-    ###6. Periodic Maintenance
+   ### 6. Periodic Maintenance
 Periodic Maintenance is the doctype which will be created only by PG Manager, Using this Manager can create the Schedule job for the Future date such if we need to clean the Rooms on Feb 15, then Manager will create one Periodic Maintenance with the Schedule date having Feb 15. So on the Feb 15 system will automatically creates the Job Log to the Employee having room details in there work log. So this doctype have folllowing fields
 1. Name of the Task - Name the Schedule task
 2. Type of work - Select field having Room Service, Cleaning, Repair and inspections (Only this works got in my mind at that time)
@@ -96,7 +93,8 @@ Periodic Maintenance is the doctype which will be created only by PG Manager, Us
 
    ![image](https://github.com/PatelAasif-Official/PG-System/assets/88040507/11f244ad-546c-49bf-b69c-3dab9016514c)
 
-   ###7. Work Log
+
+   ### 7. Work Log
 work log will be automatically created by the system, it holds the following information for the employee
 1. Employee - Link field with employee
 2. Full Name - Name of the employee auto fetched
@@ -111,7 +109,7 @@ work log will be automatically created by the system, it holds the following inf
 ![image](https://github.com/PatelAasif-Official/PG-System/assets/88040507/12030546-9c52-49da-8647-c3c762ae6eee)
 
 
-Listing of the Room on the Web Page
+## Listing of the Room on the Web Page
 Rooms automatically get piblised to the website but user change the status anytime using button Unpublished on the Room doctype, in the list view of the Room only Available, and Partailly Occupied room will be shown to the Guest user, on click a details view can be seen wich show the details and button to book now Screen shots are as following.
 List view
 ![image](https://github.com/PatelAasif-Official/PG-System/assets/88040507/8ba20d78-a7c0-4ecc-8a10-ee7fdcd28b47)
@@ -123,4 +121,5 @@ Booking Screen
 ![image](https://github.com/PatelAasif-Official/PG-System/assets/88040507/b61fa8af-2d65-45ab-b989-201b39fc540c)
 
 
+#### License
 MIT
